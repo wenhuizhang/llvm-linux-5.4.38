@@ -43,6 +43,14 @@
 #include "internal.h"
 #include "mount.h"
 
+
+#include "wenhuidebugfs/wenhuidebug.h"
+
+
+extern int wenhui_debug;
+
+
+
 /* [Feb-1997 T. Schoebel-Theuer]
  * Fundamental changes in the pathname lookup mechanisms (namei)
  * were necessary because of omirr.  The reason is that omirr needs
