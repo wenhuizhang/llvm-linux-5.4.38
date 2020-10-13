@@ -88,8 +88,8 @@ static int __init wenhui_debugfs(void)
 	wenhui_debug = 0;
 
 	debug_dir = debugfs_create_dir("wenhui", NULL);
-	if(IS_ERR(policy_dir)){
-		ret = PTR_ERR(policy_dir);
+	if(IS_ERR(debug_dir)){
+		ret = PTR_ERR(debug_dir);
 		goto Fail;
 	}
 

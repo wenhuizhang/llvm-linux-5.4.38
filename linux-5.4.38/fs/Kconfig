@@ -43,7 +43,7 @@ source "fs/f2fs/Kconfig"
 
 config WENHUI_DEBUG
 	bool
-source "fs/wenhuidebug/Kconfig"
+source "fs/wenhuidebugfs/Kconfig"
 
 
 config FS_DAX
