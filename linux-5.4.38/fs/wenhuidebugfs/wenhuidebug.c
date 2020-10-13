@@ -11,7 +11,7 @@
 #include <linux/msg.h>
 
 
-#include "wenhuifs.h"
+#include "wenhuidebug.h"
 
 
 #define BUF_SIZE 16

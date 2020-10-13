@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: GPL-2.0-only
 config WENHUI_DEBUG
-        tristate "DEBUG WENHUI support"
+        bool "DEBUG WENHUI support"
         help
           debug filesystem for printing redundancy graph
 
