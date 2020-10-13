@@ -3,5 +3,5 @@
 # Makefile for the WENHUI DEBUG
 #
 
-obj-$(CONFIG_DEBUG_WENHUI) := wenhuidebug.o
-wenhui-y := wenhuidebug.o
+obj-$(CONFIG_WENHUI_DEBUG) := wenhuidebug.o
+wenhuidebug-y := wenhuidebug.o
