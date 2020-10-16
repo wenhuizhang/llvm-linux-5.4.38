@@ -15,7 +15,7 @@
 
 
 #define BUF_SIZE 16
-extern int wenhui_debug = 0; // 0 is off, 1 is on
+int wenhui_debug = 0; // 0 is off, 1 is on
 
 
 
@@ -30,11 +30,6 @@ static ssize_t wenhui_debugfile_read(struct file *filp, char __user *buffer,
 	//int wenhui_mode = ( 0xf0000000 & ssid ) > 28;
 
 	sprintf(tmpbuf, "%d", wenhui_debug);
-	if( wenhui_debug == 0 ){
-		#define WENHUI_DEBUG 0
-	}else{
-		#define WENHUI_DEBUG 1
-	}
 	goto to_user;
 
 to_user:

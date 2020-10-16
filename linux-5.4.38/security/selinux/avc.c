@@ -1173,18 +1173,16 @@ inline int avc_has_perm_noaudit(struct selinux_state *state,
  * permissions are granted, -%EACCES if any permissions are denied, or
  * another -errno upon other errors.
  */
-#include "../../fs/wenhuidebugfs/wenhuidebug.c"
-// extern int wenhui_debug;
+extern int wenhui_debug;
 
 int avc_has_perm(struct selinux_state *state, u32 ssid, u32 tsid, u16 tclass,
 		 u32 requested, struct common_audit_data *auditdata)
 {
 	struct av_decision avd;
 	int rc, rc2;
-	// int wenhui_debug;
 
 	//wenhui 
-	if( WENHUI_DEBUG == 1 ){
+	if( wenhui_debug == 1 ){
 		printk("avc_has_perm, ssid=%d , tsid=%d, tclass=%d, requested=%d\n", ssid, tsid, tclass, requested);
 	}
 
