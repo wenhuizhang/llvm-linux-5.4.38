@@ -47,7 +47,7 @@
 #include "wenhuidebugfs/wenhuidebug.h"
 
 
-extern int wenhui_debug;
+//extern int wenhui_debug;
 
 
 
