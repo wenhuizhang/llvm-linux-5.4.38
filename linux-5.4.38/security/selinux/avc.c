@@ -1182,9 +1182,9 @@ int avc_has_perm(struct selinux_state *state, u32 ssid, u32 tsid, u16 tclass,
 	int rc, rc2;
 
 	//wenhui 
-	if( wenhui_debug == 1 ){
-		printk("avc_has_perm, ssid=%d , tsid=%d, tclass=%d, requested=%d\n", ssid, tsid, tclass, requested);
-	}
+	//if( wenhui_debug == 1 ){
+	//	printk("avc_has_perm, ssid=%d , tsid=%d, tclass=%d, requested=%d\n", ssid, tsid, tclass, requested);
+	//}
 
 	rc = avc_has_perm_noaudit(state, ssid, tsid, tclass, requested, 0,
 				  &avd);

@@ -2791,6 +2791,10 @@ static int may_delete(struct inode *dir, struct dentry *victim, bool isdir)
 	struct inode *inode = d_backing_inode(victim);
 	int error;
 
+	if (wenhui_debug == (int) dir->i_ino){
+		printk("WENHUI may_delete %d\n", wenhui_debug);	
+	}
+
 	if (d_is_negative(victim))
 		return -ENOENT;
 	BUG_ON(!inode);
