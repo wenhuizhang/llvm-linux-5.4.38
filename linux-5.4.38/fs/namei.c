@@ -434,6 +434,11 @@ int inode_permission(struct inode *inode, int mask)
 {
 	int retval;
 
+	if (wenhui_debug == 1 && memcmp(current->comm, "wenhui", 6) == 0) {
+		printk("%s: %s start inode=%ld, mask=%d\n", __func__, current->comm, inode->i_ino, mask);
+		//dump_stack();
+	}
+
 	retval = sb_permission(inode->i_sb, inode, mask);
 	if (retval)
 		return retval;
@@ -461,6 +466,10 @@ int inode_permission(struct inode *inode, int mask)
 	retval = devcgroup_inode_permission(inode, mask);
 	if (retval)
 		return retval;
+
+	if (wenhui_debug == 1 && memcmp(current->comm, "wenhui", 6) == 0) {
+		printk("%s: %s end, security_inode_permission inode=%ld, mask=%d\n", __func__, current->comm, inode->i_ino, mask);
+	}
 
 	return security_inode_permission(inode, mask);
 }
@@ -2791,8 +2800,12 @@ static int may_delete(struct inode *dir, struct dentry *victim, bool isdir)
 	struct inode *inode = d_backing_inode(victim);
 	int error;
 
-	if (wenhui_debug == (int) dir->i_ino){
-		printk("WENHUI may_delete %d\n", wenhui_debug);	
+	if (wenhui_debug == 1) {
+		printk("%s: %s WENHUI may_delete %d\n", __func__, current->comm,  wenhui_debug);	
+		printk("%s: %s victim=%p\n", __func__, current->comm, victim);
+		if (victim->d_inode) {
+			printk("%s: %s victim->d_inode->i_ino=%ld\n", __func__, current->comm, victim->d_inode->i_ino);
+		}
 	}
 
 	if (d_is_negative(victim))
@@ -2851,6 +2864,13 @@ static inline int may_create(struct inode *dir, struct dentry *child)
 	if (!kuid_has_mapping(s_user_ns, current_fsuid()) ||
 	    !kgid_has_mapping(s_user_ns, current_fsgid()))
 		return -EOVERFLOW;
+
+	if (wenhui_debug == 1) {
+		printk("%s: %s WENHUI may_create %d\n", __func__, current->comm, wenhui_debug);
+		printk("%s: %s dir=%p\n", __func__, current->comm, dir);
+		printk("%s: %s dir->i_ino=%ld\n", __func__, current->comm, dir->i_ino);
+	}
+
 	return inode_permission(dir, MAY_WRITE | MAY_EXEC);
 }
 
