@@ -11,8 +11,11 @@
 int main(int argc, char **argv)
 {
 	int i;
-	const char *name = "tmp";
+	if (argc != 2) {
+		return -1;
+	}
 
+	const char *name = argv[1];
 
 	creat(name, 0777);
 
